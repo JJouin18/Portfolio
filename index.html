@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Développeur</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="portfolio.css">
+</head>
+
+<body class="bg-slate-950 text-white min-h-screen flex flex-col">
+
+  <main class="flex-1">
+
+    <!-- HERO -->
+    <section id="hero" class="relative h-screen flex items-center justify-center text-center"
+      style="background-image: url('images/workspace-dev.png'); background-size: cover; background-position: center;">
+
+      <div class="absolute inset-0 bg-black/60"></div>
+
+      <div class="relative z-10 text-center">
+      <p class="text-white text-2xl md:text-3xl tracking-[0.25em] mb-6 font-semibold">JOHAN JOUIN</p>
+
+        <h1 id="typingText" class="text-6xl md:text-7xl font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent mb-10">Développeur Web</h1>
+
+        <div class="keyboard-row mb-10">
+          <div class="key"></div>
+          <div class="key"></div>
+          <div class="key"></div>
+          <div class="key"></div>
+          <div class="key"></div>
+          <div class="key"></div>
+          <div class="key"></div>
+          <div class="key"></div>
+        </div>
+
+        <button onclick="goToProjects()" class="bg-amber-500 text-black px-6 py-3 rounded-lg font-semibold hover:bg-amber-400 transition">Voir mes projets</button>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <nav class="flex justify-center gap-12 py-8 bg-slate-950 sticky top-0 z-50">
+      <button onclick="showSection('projects')" class="hover:text-amber-400 transition">Projets</button>
+      <button onclick="showSection('cv')" class="hover:text-amber-400 transition">CV</button>
+      <button onclick="showSection('contact')" class="hover:text-amber-400 transition">Contact</button>
+    </nav>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="content-section max-w-6xl mx-auto px-6 py-20">
+      <h3 class="text-4xl font-bold mb-12 text-center">Projets</h3>
+
+      <!-- FILTRES -->
+      <div class="flex justify-center gap-6 mb-12 text-sm">
+        <button class="filter-btn active" data-filter="all">Toutes</button>
+        <button class="filter-btn" data-filter="vitrine">Site vitrine</button>
+        <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+        <button class="filter-btn" data-filter="webapp">Webapp</button>
+      </div>
+
+      <!-- GRID PROJETS -->
+      <div class="grid md:grid-cols-3 gap-8 items-start">
+
+       <!-- Ouvre une modale avec images dynamiques (simulateur ou galerie) -->
+        <div class="project webapp cursor-pointer"
+          onclick="openModal(['images/simulateur-devis.png'], 'Simulateur de devis personnalisé', true)">
+
+          <div class="relative max-w-md mx-auto overflow-hidden rounded-lg">
+            <img src="images/simulateur-devis.png" class="w-full">
+
+           <!-- Zone de flou pour cacher certaines infos du projet -->
+            <div class="blur-zone"></div>
+          </div>
+
+          <p class="text-sm text-slate-500 mb-3 text-center">Simulateur de devis avec calcul dynamique en JS</p>
+          <h4 class="font-semibold text-center">Simulateur de devis personnalisé</h4>
+          <p class="text-sm text-slate-500 mb-3 text-center">HTML - CSS TAILWIND - JavaScript</p>
+        </div>
+
+        <!-- SITE VITRINE -->
+        <div class="project vitrine cursor-pointer" 
+        onclick="openModal(['images/pagedaccueil.png', 'images/pageparticuliers.png', 'images/pageprofessionnel.png'], 'Site vitrine WordPress', false)">
+
+          <div class="relative max-w-md mx-auto overflow-hidden rounded-lg">
+            <img src="images/pagedaccueil.png" class="w-full">
+          </div>
+
+          <p class="text-sm text-slate-500 mb-3 text-center">Aperçu du site vitrine</p>
+          <h4 class="font-semibold text-center">Site vitrine WordPress</h4>
+          <p class="text-xs text-slate-500 text-center mt-2">WORDPRESS • ELEMENTOR • HTML • CSS</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CV -->
+    <section id="cv" class="content-section hidden max-w-6xl mx-auto px-6 py-20">
+      <h3 class="text-4xl font-bold mb-16 text-center">CV</h3>
+
+      <!-- PROFIL -->
+      <div class="mb-16 pb-12 border-b border-slate-700">
+        <h4 class="text-2xl font-semibold mb-4">Profil</h4>
+
+        <div class="flex items-center gap-8 mb-12">
+          <img src="images/profil-pic.png" alt="photo de profil"
+            class="w-32 h-32 rounded-full object-cover border border-slate-700">
+          <p class="text-slate-400 max-w-3xl leading-relaxed">Développeur web passionné par la création d'interfaces modernes, performantes et responsive. J'aime concevoir 
+          des expériences utilisateur fluides et développer des projets web interactifs.</p>
+        </div>
+      </div>
+
+      <!-- COMPETENCES + FORMATION -->
+      <div class="grid md:grid-cols-2 gap-16">
+
+        <!-- COMPETENCES -->
+        <div>
+          <h4 class="text-2xl font-semibold mb-8">Compétences</h4>
+
+          <div class="space-y-6">
+            <div>
+              <p class="mb-2">HTML</p>
+              <div class="w-full bg-slate-800 rounded-full h-2">
+                <div class="bg-blue-500 h-2 rounded-full w-[90%]"></div>
+              </div>
+            </div>
+
+            <div>
+              <p class="mb-2">CSS / Tailwind</p>
+              <div class="w-full bg-slate-800 rounded-full h-2">
+                <div class="bg-green-400 h-2 rounded-full w-[85%]"></div>
+              </div>
+            </div>
+
+            <div>
+              <p class="mb-2">SQL & NoSQL</p>
+              <div class="w-full bg-slate-800 rounded-full h-2">
+                <div class="bg-red-400 h-2 rounded-full w-[80%]"></div>
+              </div>
+            </div>
+
+            <div>
+              <p class="mb-2">JavaScript</p>
+              <div class="w-full bg-slate-800 rounded-full h-2">
+                <div class="bg-yellow-400 h-2 rounded-full w-[75%]"></div>
+              </div>
+            </div>
+
+            <div>
+              <p class="mb-2">PHP</p>
+              <div class="w-full bg-slate-800 rounded-full h-2">
+                <div class="bg-purple-400 h-2 rounded-full w-[70%]"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FORMATION + PARCOURS -->
+        <div class="border-l border-slate-700 pl-10 space-y-14">
+
+          <!-- FORMATION -->
+          <div>
+            <h4 class="text-2xl font-semibold mb-6">Formation</h4>
+
+            <div class="space-y-6">
+              <div>
+                <p class="text-sm text-slate-500">2026-2027</p>
+                <h5 class="text-lg font-semibold">Bachelor Concepteur Développeur d'Applications</h5>
+                <p class="text-slate-400">Concevoir les solutions logicielles</p>
+                <p class="text-slate-400">Tester les applications informatiques</p>
+                <p class="text-slate-400">Sécuriser les applications informatiques</p>
+                <p class="text-slate-400">Manager les équipes et les projets informatiques</p>
+              </div>
+            </div>
+
+            <br>
+
+            <div class="space-y-6">
+              <div>
+                <p class="text-sm text-slate-500">2025-2026</p>
+                <h5 class="text-lg font-semibold">Titre Professionnel Développeur web et web mobile</h5>
+                <p class="text-slate-400">Apprentissage HTML, CSS, JavaScript, PHP, SQL et réalisation de projets web.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- PARCOURS -->
+          <div>
+            <h4 class="text-2xl font-semibold mb-6">Parcours</h4>
+
+            <div class="space-y-6">
+              <div>
+                <p class="text-sm text-slate-500">2026</p>
+                <h5 class="text-lg font-semibold">Stage chez ATMEDIA & Partner's</h5>
+                <p class="text-slate-400">Stage chez ATMEDIA de 10 semaines</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="content-section hidden max-w-3xl mx-auto px-6 py-20">
+      <h3 class="text-4xl font-bold mb-12 text-center">Contact</h3>
+
+      <form action="https://formspree.io/f/mojkblyn" method="POST" class="bg-slate-900 p-10 rounded-2xl border border-slate-800 shadow-xl space-y-6">
+
+        <div>
+          <label class="block text-sm mb-2 text-slate-400">Nom</label>
+          <input type="text" placeholder="Votre nom" required
+            class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500 transition">
+        </div>
+
+        <div>
+          <label class="block text-sm mb-2 text-slate-400">Email</label>
+          <input type="email" placeholder="votre@email.com" required
+            class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500 transition">
+        </div>
+
+        <div>
+          <label class="block text-sm mb-2 text-slate-400">Sujet</label>
+          <input type="text" placeholder="Sujet du message" required
+            class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500 transition">
+        </div>
+
+        <div>
+          <label class="block text-sm mb-2 text-slate-400">Message</label>
+          <textarea rows="5" placeholder="Votre message..." required
+            class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500 transition"></textarea>
+        </div>
+
+        <div class="text-center pt-4">
+          <button type="submit"
+            class="bg-amber-500 text-black px-8 py-3 rounded-lg font-semibold hover:bg-amber-400 transition transform hover:scale-105">Envoyer le message
+          </button>
+        </div>
+      </form>
+    </section>
+
+   <!-- Canvas pour effet de traînée du curseur -->
+    <canvas id="cursorTrail"></canvas>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mt-20 border-t border-slate-800 py-6">
+    <div class="grid grid-cols-3 items-center text-slate-500 text-sm px-6">
+      <p class="justify-self-start">📞 07 67 09 45 97</p>
+      <p class="text-center">© johanjouin.dev - 2026</p>
+      <a href="https://linkedin.com/in/johanjouin" target="_blank"
+        class="justify-self-end text-slate-400 hover:underline">
+        LinkedIn : Johan Jouin
+      </a>
+    </div>
+  </footer>
+
+  <!-- MODAL : galerie dynamique avec navigation + masque conditionnel -->
+  <div id="modal" class="fixed inset-0 bg-black/90 hidden flex items-center justify-center z-50">
+
+    <!-- BOUTON FERMER -->
+    <button onclick="closeModal()" class="absolute top-6 right-6 text-white text-3xl">
+      ✕
+    </button>
+
+    <div class="max-w-5xl w-full px-6 text-center">
+      <div class="relative inline-block" style="max-height:80vh; overflow-y:auto;">
+        <img id="modalImg" src="" class="w-full rounded-lg mb-6">
+
+        <!-- Boutons navigation -->
+        <button id="prevBtn"
+          class="absolute left-2 top-1/2 -translate-y-1/2 text-4xl text-white select-none">◀</button>
+        <button id="nextBtn"
+          class="absolute right-2 top-1/2 -translate-y-1/2 text-4xl text-white select-none">▶</button>
+
+        <!-- MASQUE LOGO (uniquement pour le simulateur) -->
+        <div id="modalMask"
+          class="absolute top-4 left-1/2 -translate-x-1/2 w-64 h-20 bg-black rounded-md z-50">
+        </div>
+      </div>
+
+      <h3 id="modalTitle" class="text-xl font-semibold"></h3>
+    </div>
+  </div>
+
+  <script src="portfolio.js"></script>
+</body>
+
+</html>
